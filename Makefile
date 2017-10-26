@@ -17,7 +17,9 @@ INCLUDES := $(wildcard $(SRCDIR)/*.h)
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 rm       = rm -rf
 
-.PHONY: clean fclean re all
+INSTALL_LOCATION = /usr/local/bin
+
+.PHONY: clean fclean re all install
 
 all: $(BINDIR)/$(TARGET)
 $(BINDIR)/$(TARGET): $(OBJECTS)
@@ -31,3 +33,6 @@ clean:
 fclean: clean
 	$(rm) $(BINDIR)/$(TARGET)
 re: fclean all
+
+install: all
+	cp $(BINDIR)/$(TARGET) $(INSTALL_LOCATION)
