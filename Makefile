@@ -4,9 +4,9 @@
 TARGET   = bf
 
 CC       = gcc
-CFLAGS   = -Wall -Wextra -Werror 
+CFLAGS   = -Wall -Wextra -Werror -ansi -pedantic
 LINKER   = gcc
-LFLAGS   = -Wall -Wextra -Werror
+LFLAGS   = -Wall -Wextra -Werror -pedantic
 
 SRCDIR   = src
 OBJDIR   = obj

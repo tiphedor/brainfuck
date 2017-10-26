@@ -51,29 +51,29 @@ int bf_runcode(char *bf_array, char *code, int bf_array_len) {
 
 	while(code[i]) {
 		char instruction = code[i];
-		if (instruction == '<') { // ptr--
+		if (instruction == '<') { /* ptr-- */
 			if (ptr == 0)
 				return (puterror("Runtime error: pointer reached a negative value.\n"));
 			ptr--;
-		} else if (instruction == '>') { // ptr++
+		} else if (instruction == '>') { /* ptr++ */
 			if(ptr == bf_array_len - 1)
 				return (puterror("Runtime error: pointer exceeded maximal value.\n"));
 			ptr++;
-		} else if (instruction == '+') // arr[ptr]++
+		} else if (instruction == '+') /* arr[ptr]++ */
 			bf_array[ptr]++;
-		else if (instruction == '-') // arr[ptr]--
+		else if (instruction == '-') /* arr[ptr]-- */
 			bf_array[ptr]--;
-		else if (instruction == '.') // write(arr[ptr])
+		else if (instruction == '.') /* write(arr[ptr]) */
 			writechar(bf_array[ptr]);
-		else if (instruction == ',') // read(arr[ptr])
+		else if (instruction == ',') /* read(arr[ptr]) */
 			readchar(&(bf_array[ptr]));
 		else if (instruction == '[' && bf_array[ptr] == 0 ) {
-			// Found [ but the pointed byte is null, skipping branch & jumping to matchng ]
+			/* Found [ but the pointed byte is null, skipping branch & jumping to matchng ] */
 			i = bf_find_matching_endwhile(code, i);
 		} else if (instruction == '[' && bf_array[ptr] != 0 ) {
-			// Found [ - pointed byte is non-null - entering branch
+			/* Found [ - pointed byte is non-null - entering branch */
 		} else if (instruction == ']' && bf_array[ptr] != 0 ) {
-			// Found ] and byte is non null - looping back to matching ]
+			/* Found ] and byte is non null - looping back to matching ] */
 			i = bf_find_matching_startwhile(code, i);
 		}
 		i++;
