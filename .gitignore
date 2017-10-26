@@ -1,6 +1,4 @@
-bin
 bin/bf
-bin/*
 
 # Prerequisites
 *.d
