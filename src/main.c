@@ -12,7 +12,7 @@ int main(int ac, char **av) {
 	char *bf_array;
 	char *bf_code = 0;
 
-	int bf_len = 256;
+	int bf_len = 30000;
 
 	if (ac != 2)
 		return (puterror("Error: no input file.\n"));
