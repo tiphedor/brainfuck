@@ -21,6 +21,10 @@ void	readchar(char *c) {
 	read(1, c, 1);
 }
 
+/**
+ *	Reads the contents the file located at filename into destination.
+ *	destination is allocated by chunks of 64 bytes, and \0 terminated.
+ */
 int		readfile(char* filename, char** destination) {
 	int file = open(filename, O_RDONLY);
 	int current_size = 0;
@@ -34,6 +38,7 @@ int		readfile(char* filename, char** destination) {
 		return (0);
 	}
 
+	/* Allocating the first 64 bytes */
 	*destination = (char*)malloc(sizeof(char)*64);
 	current_size = 64;
 	while (read(file, &current_char, 1)) {
