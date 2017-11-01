@@ -57,6 +57,8 @@ int		readfile(char* filename, char** destination) {
 		(*destination)[current_used_size] = current_char;
 		current_used_size++;
 	}
+	if(current_size == current_used_size)
+		*destination = (char*)realloc(*destination, current_size + 1);
 	(*destination)[current_used_size] = 0;
 	return (1);
 }
