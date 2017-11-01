@@ -12,6 +12,7 @@ int main(int ac, char **av) {
 	char *bf_array;
 	char *bf_code = 0;
 
+	/* Default array size is 30,000, according to the specs */
 	int bf_len = 30000;
 
 	if (ac != 2)

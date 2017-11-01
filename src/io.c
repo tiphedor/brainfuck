@@ -8,15 +8,24 @@
 
 #include "io.h"
 
+/**
+ *	Writes an error message onto stderr
+ */
 int		puterror(const char* err) {
 	write(2, err, strlen(err));
 	return (0);
 }
 
+/**
+ *	Writes a single character onto stdout
+ */
 void	writechar(char c) {
 	write(1, &c, 1);
 }
 
+/**
+ *	Reads a single character from stdin
+ */
 void	readchar(char *c) {
 	read(1, c, 1);
 }
@@ -45,8 +54,11 @@ int		readfile(char* filename, char** destination) {
 		return (0);
 	}
 	current_size = 64;
+
+	/* Iterate all charcters */
 	while (read(file, &current_char, 1)) {
 		if(current_size == current_used_size) {
+			/* Buffer size exceeded, reallocating 64 more bytes */
 			current_size += 64;
 			*destination = (char*)realloc(*destination, current_size);
 			if (*destination == 0) {
@@ -54,9 +66,11 @@ int		readfile(char* filename, char** destination) {
 				return (0);
 			}
 		}
+		/* Actual copy */
 		(*destination)[current_used_size] = current_char;
 		current_used_size++;
 	}
+	/* Is there still enough room for the \0 ? */
 	if(current_size == current_used_size)
 		*destination = (char*)realloc(*destination, current_size + 1);
 	(*destination)[current_used_size] = 0;

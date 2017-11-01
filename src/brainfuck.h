@@ -6,7 +6,6 @@
  *	file for more details.
  */
 
-
 #ifndef BRAINFUCK_H
 # define BRAINFUCK_H
 
