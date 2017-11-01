@@ -40,11 +40,19 @@ int		readfile(char* filename, char** destination) {
 
 	/* Allocating the first 64 bytes */
 	*destination = (char*)malloc(sizeof(char)*64);
+	if (*destination == 0) {
+		puterror("Memory error.\n");
+		return (0);
+	}
 	current_size = 64;
 	while (read(file, &current_char, 1)) {
 		if(current_size == current_used_size) {
 			current_size += 64;
 			*destination = (char*)realloc(*destination, current_size);
+			if (*destination == 0) {
+				puterror("Memory error.\n");
+				return (0);
+			}
 		}
 		(*destination)[current_used_size] = current_char;
 		current_used_size++;
