@@ -24,7 +24,6 @@ int bf_find_matching_endwhile(char *bf, int i)
 		if (bf[i] == ']' && search > 0)
 			search--;
 	}
-
 	return (-1);
 }
 
@@ -44,7 +43,6 @@ int bf_find_matching_startwhile(char *bf, int i)
 		if (bf[i] == '[' && search > 0)
 			search--;
 	}
-
 	return (-1);
 }
 
@@ -84,16 +82,15 @@ int bf_runcode(char *bf_array, char *code, int bf_array_len) {
 		else if (instruction == ',') /* read(arr[ptr]) */
 			readchar(&(bf_array[ptr]));
 		else if (instruction == '[' && bf_array[ptr] == 0 ) {
-			/* Found [ but the pointed byte is null, skipping branch & jumping to matchng ] */
+			/* Found [ but the pointed byte is = 0, skipping branch & jumping to matchng ] */
 			i = bf_find_matching_endwhile(code, i);
 		} else if (instruction == '[' && bf_array[ptr] != 0 ) {
-			/* Found [ - pointed byte is non-null - entering branch */
+			/* Found [ - pointed byte is non-zero - entering branch */
 		} else if (instruction == ']' && bf_array[ptr] != 0 ) {
-			/* Found ] and byte is non null - looping back to matching ] */
+			/* Found ] and byte is non-zero - looping back to matching ] */
 			i = bf_find_matching_startwhile(code, i);
 		}
 		i++;
 	}
-
 	return (1);
 }
