@@ -16,10 +16,4 @@ Which will copy the program to /usr/local/bin by default. You can change that pa
 
     bf brainfuck_file.bf
     
-Is the default synopsis. Will execute the code located in the brainfuck_file.bf and print the result in *stdout*. The ````,```` operator will read from *stdin*.
- 
-## Using a custom size for the array
-
-The default size of the brainfuck array is 30,000, you can change that size by specifying ````--array-size=xxxx````
-
-    bf input.bf --array-size=300
+Is the default synopsis. It will execute the code located in the brainfuck_file.bf file and print the result to *stdout*. The ````,```` operator will read from *stdin*.
